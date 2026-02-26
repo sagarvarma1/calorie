@@ -7,7 +7,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 0.96, green: 0.90, blue: 0.78)
+            Color.white
                 .ignoresSafeArea()
 
             VStack {
@@ -20,7 +20,7 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                     .background(
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(.white)
+                            .fill(Color(red: 0.96, green: 0.90, blue: 0.78))
                             .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 4)
                     )
                     .padding(.horizontal, 20)
