@@ -24,7 +24,7 @@ struct AddView: View {
                         .keyboardType(.decimalPad)
                     TextField("Fat", text: binding(\.fat))
                         .keyboardType(.decimalPad)
-                    TextField("Alcohol", text: binding(\.alcohol))
+                    TextField("Fiber", text: binding(\.fiber))
                         .keyboardType(.decimalPad)
                 }
 

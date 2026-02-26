@@ -8,16 +8,16 @@ final class FoodEntry {
     var protein: Double
     var carbs: Double
     var fat: Double
-    var alcohol: Double
+    var fiber: Double
     var date: Date
 
-    init(name: String, calories: Int, protein: Double, carbs: Double, fat: Double, alcohol: Double = 0, date: Date = .now) {
+    init(name: String, calories: Int, protein: Double, carbs: Double, fat: Double, fiber: Double = 0, date: Date = .now) {
         self.name = name
         self.calories = calories
         self.protein = protein
         self.carbs = carbs
         self.fat = fat
-        self.alcohol = alcohol
+        self.fiber = fiber
         self.date = date
     }
 }

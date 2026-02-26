@@ -26,8 +26,8 @@ final class DailyViewModel {
         entries.reduce(0) { $0 + $1.fat }
     }
 
-    var totalAlcohol: Double {
-        entries.reduce(0) { $0 + $1.alcohol }
+    var totalFiber: Double {
+        entries.reduce(0) { $0 + $1.fiber }
     }
 
     init(modelContext: ModelContext) {

@@ -45,7 +45,7 @@ struct HomeView: View {
                         macroCard(label: "Protein", value: viewModel?.weeklyProtein ?? 0, color: Color(red: 0.85, green: 0.93, blue: 0.87), size: cardSize)
                         macroCard(label: "Carbs", value: viewModel?.weeklyCarbs ?? 0, color: Color(red: 0.85, green: 0.90, blue: 0.95), size: cardSize)
                         macroCard(label: "Fat", value: viewModel?.weeklyFat ?? 0, color: Color(red: 0.96, green: 0.88, blue: 0.83), size: cardSize)
-                        macroCard(label: "Alcohol", value: viewModel?.weeklyAlcohol ?? 0, color: Color(red: 0.93, green: 0.85, blue: 0.93), size: cardSize)
+                        macroCard(label: "Fiber", value: viewModel?.weeklyFiber ?? 0, color: Color(red: 0.93, green: 0.85, blue: 0.93), size: cardSize)
                     }
                     .padding(.horizontal, padding)
                 }

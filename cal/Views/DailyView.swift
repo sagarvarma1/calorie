@@ -35,9 +35,9 @@ struct DailyView: View {
                         Text("\(String(format: "%.1f", viewModel?.totalFat ?? 0))g")
                     }
                     HStack {
-                        Text("Alcohol")
+                        Text("Fiber")
                         Spacer()
-                        Text("\(String(format: "%.1f", viewModel?.totalAlcohol ?? 0))g")
+                        Text("\(String(format: "%.1f", viewModel?.totalFiber ?? 0))g")
                     }
                 }
 
@@ -47,7 +47,7 @@ struct DailyView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(entry.name)
                                     .fontWeight(.medium)
-                                Text("\(entry.calories) cal  \u{2022}  P: \(String(format: "%.1f", entry.protein))g  C: \(String(format: "%.1f", entry.carbs))g  F: \(String(format: "%.1f", entry.fat))g  A: \(String(format: "%.1f", entry.alcohol))g")
+                                Text("\(entry.calories) cal  \u{2022}  P: \(String(format: "%.1f", entry.protein))g  C: \(String(format: "%.1f", entry.carbs))g  F: \(String(format: "%.1f", entry.fat))g  A: \(String(format: "%.1f", entry.fiber))g")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }

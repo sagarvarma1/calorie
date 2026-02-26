@@ -10,7 +10,7 @@ final class AddViewModel {
     var protein: String = ""
     var carbs: String = ""
     var fat: String = ""
-    var alcohol: String = ""
+    var fiber: String = ""
 
     var canSave: Bool {
         !name.isEmpty && Int(calories) != nil
@@ -27,7 +27,7 @@ final class AddViewModel {
             protein: Double(protein) ?? 0,
             carbs: Double(carbs) ?? 0,
             fat: Double(fat) ?? 0,
-            alcohol: Double(alcohol) ?? 0
+            fiber: Double(fiber) ?? 0
         )
         modelContext.insert(entry)
         clearForm()
@@ -39,6 +39,6 @@ final class AddViewModel {
         protein = ""
         carbs = ""
         fat = ""
-        alcohol = ""
+        fiber = ""
     }
 }

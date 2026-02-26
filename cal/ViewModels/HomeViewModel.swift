@@ -9,7 +9,7 @@ final class HomeViewModel {
     var weeklyProtein: Double = 0
     var weeklyCarbs: Double = 0
     var weeklyFat: Double = 0
-    var weeklyAlcohol: Double = 0
+    var weeklyFiber: Double = 0
 
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
@@ -35,13 +35,13 @@ final class HomeViewModel {
             weeklyProtein = entries.reduce(0) { $0 + $1.protein }
             weeklyCarbs = entries.reduce(0) { $0 + $1.carbs }
             weeklyFat = entries.reduce(0) { $0 + $1.fat }
-            weeklyAlcohol = entries.reduce(0) { $0 + $1.alcohol }
+            weeklyFiber = entries.reduce(0) { $0 + $1.fiber }
         } catch {
             weeklyCalories = 0
             weeklyProtein = 0
             weeklyCarbs = 0
             weeklyFat = 0
-            weeklyAlcohol = 0
+            weeklyFiber = 0
         }
     }
 }
