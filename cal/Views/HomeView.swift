@@ -36,13 +36,19 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
 
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                    macroCard(label: "Protein", value: viewModel?.weeklyProtein ?? 0, color: Color(red: 0.85, green: 0.93, blue: 0.87))
-                    macroCard(label: "Carbs", value: viewModel?.weeklyCarbs ?? 0, color: Color(red: 0.85, green: 0.90, blue: 0.95))
-                    macroCard(label: "Fat", value: viewModel?.weeklyFat ?? 0, color: Color(red: 0.96, green: 0.88, blue: 0.83))
-                    macroCard(label: "Alcohol", value: viewModel?.weeklyAlcohol ?? 0, color: Color(red: 0.93, green: 0.85, blue: 0.93))
+                GeometryReader { geo in
+                    let spacing: CGFloat = 16
+                    let padding: CGFloat = 20
+                    let cardSize = (geo.size.width - spacing - padding * 2) / 2
+
+                    LazyVGrid(columns: [GridItem(.fixed(cardSize)), GridItem(.fixed(cardSize))], spacing: spacing) {
+                        macroCard(label: "Protein", value: viewModel?.weeklyProtein ?? 0, color: Color(red: 0.85, green: 0.93, blue: 0.87), size: cardSize)
+                        macroCard(label: "Carbs", value: viewModel?.weeklyCarbs ?? 0, color: Color(red: 0.85, green: 0.90, blue: 0.95), size: cardSize)
+                        macroCard(label: "Fat", value: viewModel?.weeklyFat ?? 0, color: Color(red: 0.96, green: 0.88, blue: 0.83), size: cardSize)
+                        macroCard(label: "Alcohol", value: viewModel?.weeklyAlcohol ?? 0, color: Color(red: 0.93, green: 0.85, blue: 0.93), size: cardSize)
+                    }
+                    .padding(.horizontal, padding)
                 }
-                .padding(.horizontal, 20)
                 .padding(.top, 16)
 
                 Spacer()
@@ -56,19 +62,19 @@ struct HomeView: View {
         }
     }
 
-    private func macroCard(label: String, value: Double, color: Color) -> some View {
+    private func macroCard(label: String, value: Double, color: Color, size: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(label)
                 .font(.custom("Georgia", size: 16))
                 .foregroundStyle(brown.opacity(0.7))
+            Spacer()
             Text("\(String(format: "%.1f", value))g")
                 .font(.custom("Georgia", size: 28))
                 .fontWeight(.bold)
                 .foregroundStyle(brown)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .aspectRatio(1, contentMode: .fit)
+        .frame(width: size, height: size, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(color)
