@@ -1,6 +1,8 @@
 import SwiftUI
 import SwiftData
 
+private let brown = Color(red: 0.40, green: 0.26, blue: 0.13)
+
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var viewModel: HomeViewModel?
@@ -10,11 +12,18 @@ struct HomeView: View {
             Color.white
                 .ignoresSafeArea()
 
-            VStack {
+            VStack(alignment: .leading) {
+                Text("Weekly Macronutrients")
+                    .font(.custom("Georgia", size: 28))
+                    .fontWeight(.bold)
+                    .foregroundStyle(brown)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+
                 Text("Cal: \(viewModel?.weeklyCalories ?? 0)")
                     .font(.custom("Georgia", size: 36))
                     .fontWeight(.bold)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(brown)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 20)
                     .padding(.horizontal, 20)
@@ -24,7 +33,7 @@ struct HomeView: View {
                             .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 4)
                     )
                     .padding(.horizontal, 20)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
 
                 Spacer()
             }
