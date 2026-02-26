@@ -6,13 +6,17 @@ final class HomeViewModel {
     private var modelContext: ModelContext
 
     var weeklyCalories: Int = 0
+    var weeklyProtein: Double = 0
+    var weeklyCarbs: Double = 0
+    var weeklyFat: Double = 0
+    var weeklyAlcohol: Double = 0
 
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
-        fetchWeeklyCalories()
+        fetchWeeklyData()
     }
 
-    func fetchWeeklyCalories() {
+    func fetchWeeklyData() {
         let calendar = Calendar.current
         let now = Date()
         guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)) else {
@@ -28,8 +32,16 @@ final class HomeViewModel {
         do {
             let entries = try modelContext.fetch(descriptor)
             weeklyCalories = entries.reduce(0) { $0 + $1.calories }
+            weeklyProtein = entries.reduce(0) { $0 + $1.protein }
+            weeklyCarbs = entries.reduce(0) { $0 + $1.carbs }
+            weeklyFat = entries.reduce(0) { $0 + $1.fat }
+            weeklyAlcohol = entries.reduce(0) { $0 + $1.alcohol }
         } catch {
             weeklyCalories = 0
+            weeklyProtein = 0
+            weeklyCarbs = 0
+            weeklyFat = 0
+            weeklyAlcohol = 0
         }
     }
 }

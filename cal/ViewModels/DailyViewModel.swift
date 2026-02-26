@@ -26,6 +26,10 @@ final class DailyViewModel {
         entries.reduce(0) { $0 + $1.fat }
     }
 
+    var totalAlcohol: Double {
+        entries.reduce(0) { $0 + $1.alcohol }
+    }
+
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
         fetchEntries()
