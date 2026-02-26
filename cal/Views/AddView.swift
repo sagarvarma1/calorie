@@ -5,6 +5,7 @@ struct AddView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var showCamera = false
     @State private var capturedImage: UIImage?
+    @State private var hasAppeared = false
 
     var body: some View {
         ZStack {
@@ -14,14 +15,13 @@ struct AddView: View {
             if let image = capturedImage {
                 Text("Photo captured!")
                     .font(.custom("Georgia", size: 20))
-            } else {
-                Text("Tap to open camera")
-                    .font(.custom("Georgia", size: 20))
-                    .foregroundStyle(.secondary)
             }
         }
         .onAppear {
-            showCamera = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + (hasAppeared ? 0 : 0.3)) {
+                showCamera = true
+                hasAppeared = true
+            }
         }
         .fullScreenCover(isPresented: $showCamera) {
             CameraView(image: $capturedImage)
